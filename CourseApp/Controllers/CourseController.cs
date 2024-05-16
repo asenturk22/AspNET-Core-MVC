@@ -18,7 +18,8 @@ namespace CourseApp.Controllers
         [ValidateAntiForgeryToken]  //Hangi tarayiciyla iletisim kurdugunu saglar. Sahtecilik icin onlem olabilir. 
         public IActionResult Apply([FromForm] Candidate model)  //[FromForm] verinin formdan geldigini belirtiyoruz. 
         {
-            return View();
+            Repository.Add(model);
+            return Redirect("/");
         }
     }
 }
