@@ -2,14 +2,24 @@
 
 <div class="display-6">Apply</div>
 
-<form method="post" action="/course/apply">
-    <div class="form-group my-2"><lable>E-Mail</lable><input name="Email" class="form-control" type="text"></div>
-    <div class="form-group my-2"><lable>First Name</lable><input name="FirstName" class="form-control" type="text"></div>
-    <div class="form-group my-2"><lable>Last Name</lable><input name="LastName" class="form-control" type="text"></div>
+@* <form method="post" action="/course/apply"> *@
+<form method="post" asp-action="Apply">
+    <div class="form-group my-2">
+        <lable asp-for="EMail">E-Mail</lable>
+        <input asp-for="Email" class="form-control" type="text">
+    </div>
+    <div class="form-group my-2">
+        <lable asp-for="FirstName">First Name</lable>
+        <input asp-for="FirstName" class="form-control" />
+    </div>
+    <div class="form-group my-2">
+        <lable asp-for="LastName">Last Name</lable>
+        <input asp-for="LastName" class="form-control" />
+    </div>
 
     <div class="form-group my-2">
-        <label>Age</label>
-        <select name="Age" class="form-control">
+        <label asp-for="Age"></label>
+        <select asp-for="Age" class="form-control">
             <option value="18">18</option>
             <option value="19">19</option>
             <option value="20">20</option>
@@ -21,16 +31,16 @@
 
     <fieldset>
         <legend>Select One Course</legend>
-        <p><input type="radio" id="MVC" name="SelectedCourse" value="Asp.NET Core MVC"> Asp.NET Core MVC</p>
-        <p><input type="radio" id="C#" name="SelectedCourse" value="C#"> C#</p>
-        <p><input type="radio" id="NodeJS" name="SelectedCourse" value="Node.JS"> Node.JS</p>
-        <p><input type="radio" id="Django" name="SelectedCourse" value="Django"> Django</p>
+        <p><input type="radio" id="MVC" asp-for="SelectedCourse" value="Asp.NET Core MVC"> Asp.NET Core MVC</p>
+        <p><input type="radio" id="C#" asp-for="SelectedCourse" value="C#"> C#</p>
+        <p><input type="radio" id="NodeJS" asp-for="SelectedCourse" value="Node.JS"> Node.JS</p>
+        <p><input type="radio" id="Django" asp-for="SelectedCourse" value="Django"> Django</p>
 
     </fieldset>
 
     <div>
         <button class="btn btn-primary" type="submit">Apply</button>
-        <a href="/home" class="btn btn-warning">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-warning">
             Home
         </a>
     </div>
