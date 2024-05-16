@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\snt\\Desktop\\MVC\\CourseApp\\CourseApp.csproj": {}
+    "c:\\Users\\snt\\Desktop\\MVC\\CourseApp\\CourseApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\snt\\Desktop\\MVC\\CourseApp\\CourseApp.csproj": {
+    "c:\\Users\\snt\\Desktop\\MVC\\CourseApp\\CourseApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\snt\\Desktop\\MVC\\CourseApp\\CourseApp.csproj",
+        "projectUniqueName": "c:\\Users\\snt\\Desktop\\MVC\\CourseApp\\CourseApp.csproj",
         "projectName": "CourseApp",
-        "projectPath": "C:\\Users\\snt\\Desktop\\MVC\\CourseApp\\CourseApp.csproj",
+        "projectPath": "c:\\Users\\snt\\Desktop\\MVC\\CourseApp\\CourseApp.csproj",
         "packagesPath": "C:\\Users\\snt\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\snt\\Desktop\\MVC\\CourseApp\\obj\\",
+        "outputPath": "c:\\Users\\snt\\Desktop\\MVC\\CourseApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\snt\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -28,3 +28,4 @@ C:\Users\snt\Desktop\MVC\Basics\obj\Debug\net8.0\refint\Basics.dll
 C:\Users\snt\Desktop\MVC\Basics\obj\Debug\net8.0\Basics.pdb
 C:\Users\snt\Desktop\MVC\Basics\obj\Debug\net8.0\Basics.genruntimeconfig.cache
 C:\Users\snt\Desktop\MVC\Basics\obj\Debug\net8.0\ref\Basics.dll
+C:\Users\snt\Desktop\MVC\Basics\obj\Debug\net8.0\Basics.sourcelink.json

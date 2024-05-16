@@ -1,3 +1,4 @@
+using CourseApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CourseApp.Controllers
@@ -12,5 +13,12 @@ namespace CourseApp.Controllers
         {
             return View();
         }
-    }    
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]  //Hangi tarayiciyla iletisim kurdugunu saglar. Sahtecilik icin onlem olabilir. 
+        public IActionResult Apply([FromForm] Candidate model)  //[FromForm] verinin formdan geldigini belirtiyoruz. 
+        {
+            return View();
+        }
+    }
 }
