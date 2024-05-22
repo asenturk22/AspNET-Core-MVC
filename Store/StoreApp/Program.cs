@@ -1,17 +1,15 @@
 using StoreApp.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 //Serviceses Added
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<RepositoryContext>(options => 
-    {
-        options.UseSqlite(builder.Configuration.GetConnectionString("sqlconnection"));
-    }
-);
+builder.Services.AddDbContext<RepositoryDbContext>(
+    options =>  
+    options.UseSqlite(builder.Configuration.GetConnectionString("sqlconnection")));
+    
 
 var app = builder.Build();
 
