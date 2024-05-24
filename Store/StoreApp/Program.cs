@@ -15,8 +15,9 @@ var app = builder.Build();
 
 // app.MapGet("/", () => "Hello World!");
 
-app.UseHttpsRedirection();
-app.UseRouting(); 
+app.UseStaticFiles();               //wwwroot klasoru yonetir. 
+app.UseHttpsRedirection();          
+app.UseRouting();                   
 
 app.MapControllerRoute(
     name:"default", 
