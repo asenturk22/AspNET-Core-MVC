@@ -1,8 +1,21 @@
 @model Product
 
+
+
 <h3>@Model.ProductName</h3>
 <p>@Model.Price</p>
-<a href="/Product">GetDetail</a>
+
+<div class="btn-group">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">
+        <i class="fa-solid fa-house"></i>
+        Home
+    </a>
+    <a asp-controller="Product" asp-action="Index" class="btn btn-outline-primary">
+        <i class="fa-solid fa-list"></i>
+        Products
+    </a>
+
+</div>
 
 @section Header {
     <div>Header for only Get</div>

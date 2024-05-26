@@ -4,7 +4,9 @@
     <div> Only for Index footer </div>
 }
 
+<div class="row my-3">
 @foreach (Product product in Model)
 {
-    <partial name="_ProductCard" model="@product" />
+        <partial name="_ProductCard" model="@product" />
 }
+</div>

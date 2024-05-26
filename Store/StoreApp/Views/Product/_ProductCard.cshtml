@@ -1,7 +1,15 @@
 @model Product 
 
-<div>
-    <h2>@Model.ProductName</h2>
-    <p>@Model.Price</p>
-    <a asp-action="Get" asp-route-id="@Model.ProductId">Get Details</a>
+<div class="col-sm-12 col-md-3 my-4">
+    <div  class="card by-3" style="width: 18rem;">
+        <img src="https://picsum.photos/id/1/200/100" class="card-img-top" alt="...">
+        <h5 class="card-title">@Model.ProductName</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <p>@Model.Price</p>
+        <a class="btn btn-primary" asp-action="Get" asp-route-id="@Model.ProductId">
+            <i class="fa-solid fa-arrow-right"></i>
+            Get Details
+        </a>
+    </div>
 </div>
+
