@@ -1,6 +1,6 @@
 namespace Repositories.Contracts 
 {
-    public interface IRepositorManager 
+    public interface IRepositoryManager 
     {
         IProductRepository Product {get; }
         ICategoryRepository Category {get; }
