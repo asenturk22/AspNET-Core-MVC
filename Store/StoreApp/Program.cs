@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Repositories;
+using Repositories.Contracts;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,12 @@ builder.Services.AddDbContext<RepositoryDbContext>(
     b => b.MigrationsAssembly("StoreApp")
     
     ));
+
+
+//IoC  Register
+builder.Services.AddScoped<IRepositorManager, RepositoryManager>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
     
 
 var app = builder.Build();

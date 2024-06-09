@@ -1,28 +1,29 @@
 using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Repositories;
+using Repositories.Contracts;
 
 namespace StoreApp.Controllers
 {
     public class ProductController : Controller
     {
         //Dependency Injection = DI pattern
-        private readonly RepositoryDbContext _context;
+        private readonly IRepositorManager _manager;
 
-        public ProductController(RepositoryDbContext context) {
-            _context = context;
+        public ProductController(IRepositorManager manager)
+        {
+            _manager = manager;
         }
 
         public IActionResult Index() {
-            var model = _context.Products.ToList();
+            var model = _manager.Product.GetAllProducts(false);
             return View(model);
         } 
 
         public IActionResult Get(int id)
         {
-            Product product = _context.Products.First(p => p.ProductId.Equals(id));
-            return View(product);
+            var model = _manager.Product.GetOneProduct(id, false);
+            return View(model);
         }
 
         /* 
