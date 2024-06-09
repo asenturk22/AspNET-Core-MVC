@@ -4,16 +4,25 @@ namespace Repositories
 {
     public class RepositoryManager : IRepositorManager
     {
+        //Injection
         private readonly RepositoryDbContext _context;
         private readonly IProductRepository _productRepository;
 
-        public RepositoryManager(IProductRepository productRepository, RepositoryDbContext context)
+        private readonly ICategoryRepository _categoryRepository;
+        public RepositoryManager(
+            RepositoryDbContext context,
+            IProductRepository productRepository, 
+            ICategoryRepository categoryRepository 
+        )
         {
-            _productRepository = productRepository;
             _context = context;
+            _productRepository = productRepository;
+            _categoryRepository = categoryRepository;
         }
 
         public IProductRepository Product => _productRepository;
+
+        public ICategoryRepository Category => _categoryRepository;
 
         public void Save()
         {

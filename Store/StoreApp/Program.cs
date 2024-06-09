@@ -18,6 +18,8 @@ builder.Services.AddDbContext<RepositoryDbContext>(
 //IoC  Register
 builder.Services.AddScoped<IRepositorManager, RepositoryManager>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
 
     
 

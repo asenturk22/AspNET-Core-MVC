@@ -373,8 +373,136 @@ IoC (Inversion of Control)
     - Resolve
     - Dispose
 
+Yeni bir varlık oluşturup interface ayarlarını yapalım. 
+
+ICategoryRepository & CategoryRepository 
+
+```csharp
+//Entities projesinin Models klasör altına Category.cs dosyasi
+namespace Entities.Models
+{
+    public class Category
+    {
+        public int CategoryId { get; set; }
+        public String? CategoryName { get; set; } = String.Empty;
+    }
+}
+```
+
+```csharp
+// Repository/Contracts/ICategoryRepository.cs
+using Entities.Models;
+
+namespace Repositories.Contracts
+{
+    public interface ICategoryRepository : IRepositoryBase<Category>
+    {
+        
+    }
+}
+```
+
+```csharp
+// IRepositoryManager.cs
+
+namespace Repositories.Contracts 
+{
+    public interface IRepositorManager 
+    {
+        IProductRepository Product {get; }
+        ICategoryRepository Category {get; }
+
+        void Save(); 
+    }
+}
+```
+
+```csharp
+// CategoryRepository.cs
+using Entities.Models;
+using Repositories.Contracts;
+
+namespace Repositories
+{
+    public class CategoryRepository : RepositoryBase<Category>, ICategoryRepository
+    {
+        public CategoryRepository(RepositoryDbContext context) : base(context)
+        {
+        }
+    }
+}
+```
 
 
+```csharp
+//IoC  Register
+builder.Services.AddScoped<IRepositorManager, RepositoryManager>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+```
+
+```csharp
+//RepositoryManager.cs
+    private readonly ICategoryRepository _categoryRepository;
+    public RepositoryManager(
+        RepositoryDbContext context,
+        IProductRepository productRepository, 
+        ICategoryRepository categoryRepository 
+    )
+    {
+        _context = context;
+        _productRepository = productRepository;
+        _categoryRepository = categoryRepository;
+    }
+
+    //ifadeleri ekleniyor. 
+```
+```csharp
+//CategoryController.cs
+using Microsoft.AspNetCore.Mvc;
+using Repositories.Contracts;
+
+namespace StoreApp.Controllers
+{
+    public class CategoryController : Controller 
+    {
+        private IRepositorManager _manager;
+
+        public CategoryController(IRepositorManager manager)
+        {
+            _manager = manager;
+        }
+    }
+}
+```
+```csharp
+//RepositoryDbContext.cs aşağıdaki kodu ekliyoruz. 
+
+            modelBuilder.Entity<Category>()
+            .HasData(
+                new Category() {CategoryId = 1, CategoryName="Book"},
+                new Category() {CategoryId = 2, CategoryName="Elektronik"}
+
+            );
+
+// migration islemi icin asagidaki kodu calistiriyoruz. 
+dotnet ef migrations add Category
+dotnet ef database update
+```
+oluşturulan Categories tablosunun ve içine eklenen verileri görmek için; 
+
+```csharp
+> sqlite3 ProductDb.db 
+sqlite3 > .tables    //Oluşturulan tabloların listesini gösterir. 
+sqlite3 > .mode box  //kutu görünümüne geç
+sqlite3 > select * from categories;      
+```
+```csharp
+```
+```csharp
+```
+```csharp
+```
 ```csharp
 ```
 ```csharp
