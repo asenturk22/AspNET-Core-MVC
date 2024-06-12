@@ -24,3 +24,18 @@ içersinde pek çok bileşen kullanılabiliyor.
 - ContentViewComponentResult
 - HtmlContentViewComponentResult
 
+
+
+## Areas 
+
+- Identity  : Kullanıcı kimliklendirme işlemleri
+- Admin     : Sayfaya eklenecek ekleme silme işlemleri bu bölümde gerçekleştirilir. 
+    * Users
+    * Orders
+    * Products
+
+
+## adminlte.io   dashboard 
+
+## AutoMapper
+

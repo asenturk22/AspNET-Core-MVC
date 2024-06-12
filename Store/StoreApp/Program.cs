@@ -32,13 +32,32 @@ var app = builder.Build();
 // app.MapGet("/", () => "Hello World!");
 
 app.UseStaticFiles();               //wwwroot klasoru yonetir. 
-app.UseHttpsRedirection();          
+app.UseHttpsRedirection();     
+
 app.UseRouting();                   
 
-app.MapControllerRoute(
-    name:"default", 
-    pattern:"{controller=Home}/{action=Index}/{id?}"
-);
+//End Points
+app.UseEndpoints(endpoints => 
+{
+    endpoints.MapAreaControllerRoute(
+        name:"Admin", 
+        areaName:"Admin",
+        pattern: "Admin/{controller=Dashboard}/{action=Index}/{id?}"
+    );
+    
+    endpoints.MapControllerRoute(
+        name:"default", 
+        pattern:"{controller=Home}/{action=Index}/{id?}"
 
+    );
+});
+
+/*
+One endpoints
+app.MapControllerRoute(
+        name:"default", 
+        pattern:"{controller=Home}/{action=Index}/{id?}"
+);
+*/
 
 app.Run();

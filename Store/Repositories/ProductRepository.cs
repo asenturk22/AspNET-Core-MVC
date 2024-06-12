@@ -17,5 +17,9 @@ namespace Repositories
         {
             return FindByCondition(p => p.ProductId.Equals(id), trackChanges);
         }
+
+        public void CreateOneProduct(Product product) => Create(product);
+
+        public void DeleteOneProduct(Product product) => Remove(product);
     }
 }

@@ -13,6 +13,17 @@ namespace Repositories
         {
             _context = context;
         }
+
+        public void Create(T entity)
+        {
+            _context.Set<T>().Add(entity);
+        }
+
+        public void Remove(T entity)
+        {
+            _context.Set<T>().Remove(entity);
+        }
+
         public IQueryable<T> FindAll(bool trackChanges)
         {
             return trackChanges 
