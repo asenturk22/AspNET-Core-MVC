@@ -24,6 +24,11 @@ namespace Repositories
             _context.Set<T>().Remove(entity);
         }
 
+        public void Update(T entity)
+        {
+            _context.Set<T>().Update(entity);
+        }
+
         public IQueryable<T> FindAll(bool trackChanges)
         {
             return trackChanges 

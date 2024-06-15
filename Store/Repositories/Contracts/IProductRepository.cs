@@ -10,5 +10,6 @@ namespace Repositories.Contracts
 
         void CreateOneProduct(Product product);
         void DeleteOneProduct(Product product);
+        void UpdateOneProduct(Product entity); 
     }
 }

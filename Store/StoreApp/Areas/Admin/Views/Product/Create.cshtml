@@ -1,4 +1,4 @@
-@model Product
+@model ProductDtoForInsertion
 
 <div class="text-center">
     <div class="display-6">Create</div>
@@ -8,10 +8,27 @@
     <div class="text-danger" asp-validation-summary="All"></div>
 
     <div class="form-group my-3">
+        <label asp-for="CategoryId"></label>
+        <select 
+            class="form-control" 
+            asp-for="CategoryId"
+            asp-items="@ViewBag.Categories">
+            @*
+            asagidaki ifade asp-items=@ViewBag.Categories olarak daha sade hale getirildi.
+             @foreach (Category cat in ViewBag.Categories) 
+            {
+                <option value="@cat.CategoryId">@cat.CategoryName</option>
+            } 
+            *@
+        </select>
+    </div>
+
+    <div class="form-group my-3">
         <label asp-for="ProductName"></label>
         <input asp-for="ProductName" class="form-control" />
     </div>
 
+    
     <div class="form-group my-3">
         <label asp-for="Price"></label>
         <input asp-for="Price" class="form-control" />
