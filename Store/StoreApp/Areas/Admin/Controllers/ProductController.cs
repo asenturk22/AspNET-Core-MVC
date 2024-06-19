@@ -1,8 +1,12 @@
 using Entities.Models;
 using Entities.Dtos;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;  // IActionResult ve Controller için
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Services.Contracts;
+using Microsoft.AspNetCore.Http; // IFormFile için
+using System.IO; // Path ve FileStream için
+using System.Threading.Tasks; // async ve await için
+using System; // String.Concat, Exception ve Guid için
 
 namespace StoreApp.Areas.Controllers
 {
@@ -46,9 +50,18 @@ namespace StoreApp.Areas.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken ]
-        public IActionResult Create([FromForm] ProductDtoForInsertion productDto)
-        {
+        public async Task<IActionResult> Create([FromForm] ProductDtoForInsertion productDto, IFormFile file)
+        { 
             if (ModelState.IsValid) {
+                //File operations
+                string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", file.FileName); 
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                productDto.ImageUrl = String.Concat("/images/", file.FileName);
                 _manager.ProductService.CreateProduct(productDto); 
                 return RedirectToAction("Index");
             }
@@ -67,11 +80,21 @@ namespace StoreApp.Areas.Controllers
         //Post Method
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update([FromForm] ProductDtoForUpdate product)
+        public async Task<IActionResult> Update([FromForm] ProductDtoForUpdate productDto,  IFormFile file)
         {
             if (ModelState.IsValid) 
             {
-                _manager.ProductService.UpdateOneProduct(product);
+                //file operations
+                //product = productDto düzeltilecek.
+                string path = Path.Combine(Directory.GetCurrentDirectory(), 
+                "wwwroot", "images", file.FileName);
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+                productDto.ImageUrl = String.Concat("/images/", file.FileName);
+                _manager.ProductService.UpdateOneProduct(productDto);
                 return RedirectToAction("Index");
             }
             return View();
