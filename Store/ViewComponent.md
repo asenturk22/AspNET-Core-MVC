@@ -41,3 +41,28 @@ içersinde pek çok bileşen kullanılabiliyor.
 
 ## File Operations 
 
+## RazorPages
+
+## Sessions
+
+- StateManagement
+    - Cookie
+    - Session State
+    - Temp Data
+    - Query String
+    - Hidden Fileds
+    - HttpContext.Items
+    - Cache
+
+
+
+# program.cs
+
+//Sessions
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(); 
+app.UseSession();
+
+
+- HttpContextAccessor 
+
